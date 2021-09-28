@@ -6,4 +6,12 @@ public class Operations {
         linkedList.push(56);
         linkedList.print();
     }
+    public static void appendElement() {
+        LinkedLists linkedList = new LinkedLists();
+        linkedList.append(56);
+        linkedList.append(30);
+        linkedList.append(70);
+        linkedList.print();
+
+    }
 }
