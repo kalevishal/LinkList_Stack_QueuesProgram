@@ -1,4 +1,3 @@
-
 public class Operations {
     public static LinkedLists addElementAtStart(){
         LinkedLists linkedList= new LinkedLists();
@@ -40,4 +39,12 @@ public class Operations {
         linkedList.searchNode(30);
     }
 
+    public static void insertAfterSearchNode() {
+        System.out.println("Before Insertion");
+        LinkedLists linkedList= addElementAtStart();
+        Node newNode = new Node(40);
+        Node previousNode = linkedList.insertAfter(30, newNode);
+        System.out.println("After Insertion");
+        linkedList.print();
+    }
 }

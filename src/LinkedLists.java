@@ -81,6 +81,23 @@ public class LinkedLists {
         }
 
     }
+    public Node insertAfter(int value, Node newNode) {
+        Node tempNode = head;
+        if (head == null) {
+            System.out.println("List is empty");
+        } else {
+            while (tempNode != null) {
+                if (tempNode.data == value) {
+                    break;
+                }
+                tempNode = tempNode.next;
+
+            } Node tempNodeNext = tempNode.next;
+            tempNode.next = newNode;
+            newNode.next = tempNodeNext;
+        }
+        return tempNode;
+    }
 
     public void print() {
         if (head == null) {
