@@ -1,76 +1,97 @@
 public class LinkedLists {
+    Node head;
+    Node tail;
 
-	Node head;
-	Node tail;
+    public void push(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            Node temp = head;
+            this.head = newNode;
+            newNode.next = temp;
+        }
+    }
 
-	public void push(int data) {
-		Node newNode = new Node(data);
-		if (head == null) {
-			this.head = newNode;
-			this.tail = newNode;
-		} else {
-			Node temp = head;
-			this.head = newNode;
-			newNode.next = temp;
-		}
-	}
+    public void append(int data) {
+        Node newnode = new Node(data);
+        if (head == null) {
+            this.head = newnode;
+            this.tail = newnode;
+        } else {
+            Node temp = tail;
+            this.tail = newnode;
+            temp.next = tail;
+        }
+    }
 
-	public void append(int data) {
-		Node newnode = new Node(data);
-		if (head == null) {
-			this.head = newnode;
-			this.tail = newnode;
-		} else {
-			Node temp = tail;
-			this.tail = newnode;
-			temp.next = tail;
-		}
-	}
+    public void insert(int data) {
+        Node newnode = new Node(data);
+        if (head == null) {
+            this.head = newnode;
+        } else if (tail == null) {
+            this.tail = newnode;
+        } else {
+            Node temp = newnode;
+            temp.next = this.tail;
+            this.head.next = temp;
+        }
+    }
 
-	public void insert(int data) {
-		Node newnode = new Node(data);
-		if (head == null) {
-			this.head = newnode;
-		} else if (tail == null) {
-			this.tail = newnode;
-		} else {
-			Node temp = newnode;
-			temp.next = this.tail;
-			this.head.next = temp;
-		}
-	}
+    public void popFirst() {
+        if (head == null) {
+            System.out.println("\nList is empty!!!");
+        } else {
+            Node temp = this.head.next;
+            head = temp;
+        }
+    }
 
-	public void popFirst() {
-		if (head == null) {
-			System.out.println("\nList is empty!!!");
-		} else {
-			Node temp = this.head.next;
-			head = temp;
-		}
-	}
+    public void popLast() {
+        Node tempNode = head;
+        while (!tempNode.next.equals(tail)) {
+            tempNode = tempNode.next;
+        }
+        this.tail = tempNode;
+        tempNode.next = null;
 
-	public void popLast() {
-		if (head == null) {
-			System.out.println("\nList is empty!!!");
-		} else {
-			Node temp = this.head.next;
-			head = temp;
-		}
-	}
+    }
 
-	
+    public void searchNode(int value) {
+        Node tempNode = head;
+        int index = 1;
+        boolean flag = false;
+        if (head == null)
+            System.out.println("List is empty");
+        else {
+            while (tempNode != null) {
+                if (tempNode.data == value) {
+                    flag = true;
+                    break;
+                }
+                index++;
+                tempNode = tempNode.next;
+            }
+        }
+        if (flag == true) {
+            System.out.println(value + " is present at " + index);
+        } else {
+            System.out.println("Element is not present");
+        }
 
-	public void print() {
-		if (head == null) {
-			System.out.println("Linked List is Empty");
-		} else {
-			Node temp = head;
-			while (temp != null) {
-				System.out.print(temp.data + " ");
-				temp = temp.next;
-			}
-			System.out.println();
-		}
-	}
+    }
 
+    public void print() {
+        if (head == null) {
+            System.out.println("Linked List is Empty");
+        } else {
+            Node temp = head;
+            while (temp != null) {
+                System.out.print(temp.data+ " ");
+                temp = temp.next;
+            }
+            System.out.println();
+        }
+    }
 }
